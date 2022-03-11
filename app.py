@@ -142,32 +142,13 @@ class RentingForm(FlaskForm):
     ausleihDatum = DateField('Ausleihdatum', render_kw={'placeholder': 'Start'})
     rueckgabedatum = DateField('Rückgabedatum', render_kw={'placeholder': 'Ende'})
 
-    def calculate_price(self):
-        # price: float = 0
-        rentingDays = 0
-        # priceHour = self.car.data.preisgruppe.preisStunde
-        priceDay = self.car.data.preisgruppe.preisTag
-        # priceWeek = self.car.data.preisgruppe.preisWoche
-        # priceKm = self.car.data.preisgruppe.preisKm
-        if self.rueckgabedatum.data:
-            rentingDays = self.rueckgabedatum.data - self.ausleihDatum.data
-            print(self.rueckgabedatum.data)
-            print(self.ausleihDatum.data)
-            print(rentingDays)
-        price = rentingDays * priceDay
-        return price
-
 
 # URL Routes
 @app.route('/home/')
 @app.route('/', methods=['GET', 'POST'])
-def home():  # put application's code here
-    price = 0
+def home():
     form = RentingForm(request.form)
-    if request.method == "POST":
-        if form.validate_on_submit():
-            price = form.calculate_price()
-    return render_template('renting.html', form=form, price=price)
+    return render_template('renting.html', form=form)
 
 
 @app.route('/cars/')
