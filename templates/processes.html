@@ -1,0 +1,78 @@
+{% extends 'main.html' %}
+{% block content %}
+    <div class="row border-bottom my-3">
+        <div class="col">
+            <h2>Vorgänge</h2>
+        </div>
+    </div>
+    <form method="post" action="{{ url_for('processes') }}">
+        <div class="row">
+            {{ form.csrf_token }}
+            <div class="col-auto">
+                {{ form.id(class="form-control form-control-sm") }}
+            </div>
+            <div class="col-auto">
+                {{ form.ausleihDatum(class="form-control form-control-sm") }}
+            </div>
+            <div class="col-auto">
+                {{ form.rueckgabeDatum(class="form-control form-control-sm") }}
+            </div>
+            <div class="col-auto">
+                {{ form.anfangsKm(class="form-control form-control-sm") }}
+            </div>
+            <div class="col-auto">
+                {{ form.endKm(class="form-control form-control-sm") }}
+            </div>
+            <div class="col-auto">
+                {{ form.kunde(class="form-select form-select-sm") }}
+            </div>
+            <div class="col-auto">
+                {{ form.personal(class="form-select form-select-sm") }}
+            </div>
+            <div class="col-auto">
+                {{ form.auto(class="form-select form-select-sm") }}
+            </div>
+            <div class="col-auto">
+                {{ form.preisgruppe(class="form-select form-select-sm") }}
+            </div>
+            <div class="col-auto">
+                <input type="submit" class="btn btn-sm btn-success" value="Speichern">
+            </div>
+        </div>
+    </form>
+    <div class="row">
+        <div class="col">
+
+            <table class="table">
+        </div>
+    </div>
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Ausleihdatum</th>
+        <th scope="col">Rückgabedatum</th>
+        <th scope="col">Anfangs KM</th>
+        <th scope="col">Ende KM</th>
+        <th scope="col">Kunde</th>
+        <th scope="col">Personal</th>
+        <th scope="col">Auto</th>
+        <th scope="col">Preisgruppe</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for process in processes %}
+        <tr>
+            <th scope="row">{{ process.idVorgang }}</th>
+            <td>{% if process.ausleihDatum %}{{ process.ausleihDatum.strftime('%d.%m.%Y') }}{% endif %}</td>
+            <td>{% if process.rueckgabeDatum %}{{ process.rueckgabeDatum.strftime('%d.%m.%Y') }}{% endif %}</td>
+            <td>{% if process.anfangsKm %}{{ process.anfangsKm }}km{% endif %}</td>
+            <td>{% if process.endKm %}{{ process.endKm }}km{% endif %}</td>
+            <td>{% if process.kunde %}{{ process.kunde }}{% endif %}</td>
+            <td>{% if process.personal %}{{ process.personal }}{% endif %}</td>
+            <td>{% if process.auto %}{{ process.auto }}{% endif %}</td>
+            <td>{% if process.preisgruppe %}{{ process.preisgruppe }}{% endif %}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+{% endblock content %}

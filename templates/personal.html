@@ -1,0 +1,46 @@
+{% extends 'main.html' %}
+{% block content %}
+    <div class="row border-bottom my-3">
+        <h2>Personal</h2>
+    </div>
+    <form method="post" action="{{ url_for('personal') }}">
+        <div class="row">
+            {{ form.csrf_token }}
+            <div class="col-auto">
+                {{ form.id(class="form-control") }}
+            </div>
+            <div class="col-auto">
+                {{ form.nachname(class="form-control") }}
+            </div>
+            <div class="col-auto">
+                {{ form.vorname(class="form-control") }}
+            </div>
+            <div class="col-auto">
+                <input type="submit" class="btn btn-success" value="Speichern">
+            </div>
+        </div>
+    </form>
+    <div class="row">
+        <div class="col">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nachname</th>
+                    <th scope="col">Vorname</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for pers in personal %}
+                    <tr>
+                        <th scope="row">{{ pers.idPersonal }}</th>
+                        <td>{% if pers.Nachname %}{{ pers.Nachname }}{% endif %}</td>
+                        <td>{% if pers.Vorname %}{{ pers.Vorname }}{% endif %}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+{% endblock content %}

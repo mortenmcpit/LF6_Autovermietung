@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    {# Bootstrap CSS #}
+    {% include 'css.html' %}
+    {# Bootstrap JS Packages #}
+    {% include 'js.html' %}
+
+
+    <title>AntiQue - Fahrzeugvermietung</title>
+</head>
+<body class="bg-light">
+<main>
+    {% include '_nav.html' %}
+    <div class="container my-5 shadow-lg p-3 mb-5 bg-body rounded">
+        <div class="row border-bottom">
+            <div class="col">
+                <h1>AntiQue - Fahrzeugvermietung</h1>
+            </div>
+        </div>
+        {% block content %}
+        {% endblock content %}
+    </div>
+</main>
+
+
+</body>
+</html>

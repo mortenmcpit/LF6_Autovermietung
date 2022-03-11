@@ -1,0 +1,36 @@
+{% extends 'main.html' %}
+{% block content %}
+    <div class="row border-bottom my-3">
+        <h2>Kunden</h2>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Kundennummer</th>
+                <th scope="col">Nachname</th>
+                <th scope="col">Vorname</th>
+                <th scope="col">Straße</th>
+                <th scope="col">PLZ</th>
+                <th scope="col">Stadt</th>
+                <th scope="col">Land</th>
+                <th scope="col">Geburtsdatum</th>
+                <th scope="col">Telefon</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for customer in customers %}
+                <tr>
+                    <th scope="row">{{ customer.idKunde }}</th>
+                    <td>{% if customer.Nachname %}{{ customer.Nachname }}{% endif %}</td>
+                    <td>{% if customer.Vorname %}{{ customer.Vorname }}{% endif %}</td>
+                    <td>{% if customer.Strasse %}{{ customer.Strasse }}{% endif %}</td>
+                    <td>{% if customer.Plz %}{{ customer.Plz }}{% endif %}</td>
+                    <td>{% if customer.Stadt %}{{ customer.Stadt }}{% endif %}</td>
+                    <td>{% if customer.Land %}{{ customer.Land }}{% endif %}</td>
+                    <td>{% if customer.Geburtsdatum %}{{ customer.Geburtsdatum.strftime('%d.%m.%Y') }}{% endif %}</td>
+                    <td>{% if customer.Telefon %}{{ customer.Telefon }}{% endif %}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock content %}

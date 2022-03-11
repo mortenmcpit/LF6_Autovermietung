@@ -1,0 +1,28 @@
+{% extends 'main.html' %}
+{% block content %}
+    <div class="row border-bottom my-3">
+        <h2>Preisgruppen</h2>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Preis/h</th>
+                <th scope="col">Preis/Tag</th>
+                <th scope="col">Preis/Woche</th>
+                <th scope="col">Preis/Km</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for price in prices %}
+                <tr>
+                    <th scope="row">{{ price.idPreisgruppe }}</th>
+                    <td>{% if price.preisStunde %}{{ price.preisStunde }}€{% endif %}</td>
+                    <td>{% if price.preisTag %}{{ price.preisTag }}€{% endif %}</td>
+                    <td>{% if price.preisWoche %}{{ price.preisWoche }}€{% endif %}</td>
+                    <td>{% if price.preisKm %}{{ price.preisKm }}€{% endif %}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock content %}

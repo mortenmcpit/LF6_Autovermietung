@@ -1,0 +1,29 @@
+{% extends 'main.html' %}
+{% block content %}
+    <div class="row">
+        <h2>Ausleihen</h2>
+    </div>
+    <form class="form" method="post" action="{{ url_for('home') }}">
+        <div class="row">
+            <div class="col">
+                {{ form.car(class="form-select") }}
+            </div>
+            <div class="col">
+                {{ form.kunde(class="form-select") }}
+            </div>
+            <div class="col">
+                {{ form.ausleihDatum(class="form-control") }}
+            </div>
+            <div class="col">
+                {{ form.rueckgabedatum(class="form-control") }}
+            </div>
+            <Div class="col">
+                <input type="submit" class="btn btn-sm btn-success" value="Berechnen">
+            </Div>
+        </div>
+    </form>
+
+    <div class="row">
+{#        <h4>Kosten: {% if form.is_submitted %}{{ form.calculate_price() }}{% endif %}€</h4>#}
+    </div>
+{% endblock content %}

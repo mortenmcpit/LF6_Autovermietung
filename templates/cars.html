@@ -1,0 +1,52 @@
+{% extends 'main.html' %}
+{% block content %}
+    <div class="row border-bottom my-3">
+        <h2>Autos</h2>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Baujahr</th>
+                <th scope="col">PS</th>
+                <th scope="col">CCM</th>
+                <th scope="col">Kennzeichen</th>
+                <th scope="col">Hersteller</th>
+                <th scope="col">Typ</th>
+                <th scope="col">Farbe</th>
+                <th scope="col">Kraftstoff</th>
+                <th scope="col">Sitzplätze</th>
+                <th scope="col">Extras</th>
+                <th scope="col">Zubehör 1</th>
+                <th scope="col">Zubehör 2</th>
+                <th scope="col">Versicherungsnr</th>
+                <th scope="col">TÜV</th>
+                <th scope="col">ASU</th>
+                <th scope="col">Preisgruppe</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for car in cars %}
+                <tr>
+                    <th scope="row">{{ car.idAuto }}</th>
+                    <td>{% if car.baujahr %}{{ car.baujahr.strftime('%d.%m.%Y') }}{% endif %}</td>
+                    <td>{% if car.ps %}{{ car.ps }}{% endif %}</td>
+                    <td>{% if car.ccm %}{{ car.ccm }}{% endif %}</td>
+                    <td>{% if car.kennzeichen %}{{ car.kennzeichen }}{% endif %}</td>
+                    <td>{% if car.hersteller %}{{ car.hersteller }}{% endif %}</td>
+                    <td>{% if car.typ %}{{ car.typ }}{% endif %}</td>
+                    <td>{% if car.farbe %}{{ car.farbe }}{% endif %}</td>
+                    <td>{% if car.kraftstoff %}{{ car.kraftstoff }}{% endif %}</td>
+                    <td>{% if car.sitzplaetze %}{{ car.sitzplaetze }}{% endif %}</td>
+                    <td>{% if car.extras %}{{ car.extras }}{% endif %}</td>
+                    <td>{% if car.zubehoer1 %}{{ car.zubehoer1 }}{% endif %}</td>
+                    <td>{% if car.zubehoer2 %}{{ car.zubehoer2 }}{% endif %}</td>
+                    <td>{% if car.versicherungsNr %}{{ car.versicherungsNr }}{% endif %}</td>
+                    <td>{% if car.tuv %}{{ car.tuv }}{% endif %}</td>
+                    <td>{% if car.asu %}{{ car.asu }}{% endif %}</td>
+                    <td>{% if car.preisgruppe %}{{ car.preisgruppe }}{% endif %}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock content %}
