@@ -10,6 +10,8 @@ from wtforms_sqlalchemy.fields import QuerySelectField
 app = Flask(__name__, template_folder='templates', static_folder='static')
 # Hier MySQL Connection Daten einfügen
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:W8meister!@localhost:3306/autovermitung'
+# For Sqlite switch to this URI
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = 'C2HWGVoMGfNTBsrYQg8EcMrdTimkZfAb'
 
